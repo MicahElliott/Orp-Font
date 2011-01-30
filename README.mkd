@@ -1,0 +1,257 @@
+# Orp Bitmap Fonts for X11 (xterm)
+
+AKA: Easy font creation and installation for font dummies.
+
+AKA: A simplified extension/fork of the
+[Unicode fonts and tools for X11](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
+project.
+
+I’ve created three new 6x12 bitmap fonts (plus a silly experimental font).
+
+* Orp Medium    (adapted from Pro Font with various changes)
+* Orp Bold      (only possible readable 6x12 bold)
+* Orp Book      (like Bookman Old Style; slightly ugly but probably optimal)
+* Elvish Medium (fugly attempt at italic, but interesting)
+
+The vertical height on all has been lowered by 1px.
+
+Given that I am definitely not a “Pro”, I’m calling this Orp.
+
+## Quick start
+
+If you just want to start using Orp without tweaking glyphs or moving things
+around, all you need to do is run:
+    % xset +fp $PWD
+
+You should now be able to fire up an xterm and see the new Orp you just
+“installed”:
+    % xterm -geom 80x93 -fn '-misc-orp-medium-r-*--*-*-*-*-*-*-iso10646-1'
+
+Put the `xset` line (hard-code expanded `$PWD`) into your `~/.xininrc` and
+you’re now permanent! Read on for tweaking details, philosophy, and anecdotes…
+
+## Why a project out of a single font?
+
+It’s just a console font; why bother with this? To some, a font is really
+important.
+
+1. I finally have what I consider a perfect enough programming/do-everything
+   font.
+
+2. It’s been non-trivial create, build, and install your own X11 font.
+
+3. At some point in your life you’re going to long for a tweak to your font,
+   or addition of some wacky glyph you’ve dreamed up.
+
+4. There’s not much in here, but this README serves as a place where I can
+   pontificate on my font ideals, and explain supporting of extensive glyphs
+   and viewing a lot of text at a time.
+
+Over the past decade I have spent several days here and there fiddling around
+with finding good small fonts. Although I’ve been pretty (though not
+perfectly) happy with 6x10 in an xterm, I’ve come across files where I needed
+to read/use characters that were not available. So I had to move to 6x12. But
+it just felt too big or inefficient, and I wasn’t able to view enough lines of
+code on my screens. It also had a few things I didn’t like (jagged slashes,
+skinny zero, some inconsistent characters). It also had an extra pixel of
+spacing per line, which was wasting 10% of the screen.
+
+Now finally, I’ve taken my very favorite monospace font,
+[Pro Font](http://en.wikipedia.org/wiki/Pro_font), adapted an xterm friendly
+BDF for it, and enhanced some of its glyphs to be slightly more friendly.
+
+## Disclaimer
+
+I don’t know much about the X11 font system or the tools that manipulate them.
+I played with the package enough to see how new fonts are built and installed,
+and emulated that into a script that could operate on a single font.
+
+## All you need to understand
+
+A BDF file is the ‘source code’ of your font. It is modifiable via
+a tool called gbdfed (Gtk BDF EDitor), which is pretty easy for any noob to
+start whacking glyphs with. After you’re happy with your BDF you run it
+through a bunch of tools that create an output (gzipped) PCF file. Finally you
+tell X to start using the font/directory.
+
+## Included in this repo
+
+* `*.bdf` — A few fonts that you may like or want to change/use as baseline.
+
+* `xfont-install.zsh` — The little glue script that does what the full Makefile
+  accomplishes for all X11 fonts. Though tiny, it does the full build, plus
+  installation and setup.
+
+* `xfont-test.zsh` — Just dumps a test file to the screen. Could do some other
+  tests in the future.
+
+* `*.pcf.gz` — I’ve included the two important Orp fonts in complied form
+  since they’re tiny, and some will simply want to install them without
+  tweaking.
+
+And things you shouldn’t care about:
+
+* `bdftruncate.pl` script. You’ve probably already got this on your system,
+  but this newer version is from Markus’ package and provides the recent
+  support for some of the ISO10646 stuff (I think that’s what it does).
+  Anyway, the system version doesn’t work for this, so I’m copying it in.
+
+* Auxiliary stuff for building.
+
+## How to create, build, and install a font
+
+1. Install some prerequisites.
+    % aptitude install xfonts-utils gbdfed
+
+1. To create a new font, just copy a base font (you’ll likely want to start
+   with Orp Medium)
+    % cp orp.bdf myfont.bdf
+
+1. Fire up `gbdfed`, hack some glyphs, and set up your new font’s properties.
+   Just hit `C-P` to get to properties and make sure your font family name is
+   ‘myfont’.
+
+1. Build and install to CWD with
+    % fontx.zsh myfont
+   The font tools magic happens via the few commands in there, but you
+   shouldn’t need to worry about it.
+
+1. Figure out what your new font is actually called.
+    % xfontsel
+   Make sure your new font shows up under ‘fmly’ and select it. You can past
+   that crazy `-*-myfont-*-…` string into your `~/.Xdefaults-$(hostname)` file.
+    xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
+
+1. Test your new font
+    % fontx-test.zsh myfont
+
+## Why bitmap? (vs truetype)
+
+There are many glyphs that are not available in any but the standard X11
+fonts. Use `xfont-test.zsh` as a test.
+
+For small font rendering it’s highly undesirable to have subpixel smoothing.
+
+It probably goes without saying, but it is truly shameful to be writing code,
+looking at data, or doing much of anything in an editor or terminal with a
+variable width font. Programmers depend so much on intented and tabular
+formatting that the world would fall apart without monospacing.
+
+Note to publishers: Please, please always use monospace fonts for your code
+samples.
+
+## Why a bold font?
+
+Bold is beautiful too. It’s just that you may be used to seeing it rendered
+algorithmically as an adaptation from its ‘medium’ source. This results in
+fonts that become too heavy (e.g., solid block ‘m’ and ‘#’) and come out
+unreadable. However, the 6x12 set can be manually crafted as bold, to a
+lesser degree of boldness, and yet still be bold. (This is less of an issue
+with larger fonts.)
+
+You can see some of the basic effects in limited color with this:
+    % for c in {1..7}; do echo -e "\e[0;$c;3${c}muNitErest1n6 5tR|ng"; done
+
+Presentational variation is important in the code/documentation you
+read/write. If you forgo bold fonts you’re really missing out on
+distinguishing of some inherent formatting semantics. Possible variations in a
+console include…
+
+### Color
+This is pretty obvious, as any syntax highlighter will make liberal use
+of color differentiation.
+
+You can even take color to an extreme level by doing standout/inversion, but
+it’s rare to want this.
+
+### Font/weight (bold vs medium)
+Terminals don’t really allow multiple fonts, but bold can be mixed in and
+actually can be a different font.
+
+Bold is great for distinguishing files in `ls` listings, standing forward
+important pieces of code, documentation headings, and several other cases.
+
+### Underline
+Underline is a bit strong for most things, but for exceptional bits can be
+helpful. Examples: FIXME comments, definitions, error messages,
+class/interface/module names.
+
+### Blinking
+This is almost always unwanted. However, I have found it useful for very
+glaring things, like failing test output. Essentially, for things that need
+immediate attention.
+
+### Sizing/obliqueness
+Sadly, most terminals (including xterm) don’t offer much in the way of these.
+But you really need to use xterm (or one of its close cousins)…
+
+## Why xterm?
+
+* True bitmap fonts
+* All the ISO10646 glyphs (for math, prompts, drawing, etc)
+* Lightweight
+* 256+ (RGB) color
+* All Properties (bold, underline, inverse) work as expected (except oblique)
+* Alt/Meta actually work and are easily configurable
+
+## Glyph details (for the tweakers)
+
+(The book and elvish are not great, so you probably don’t want to use them.)
+
+You rarely want to spill pixels into column 6. On occasion I find it’s
+acceptable to do so for one pixel on a couple letters. Since col-6 is used as
+the ‘spacer’ between characters, it’s pretty essential to keep intact.
+
+Glyph tops should form a uniform line at row 5. Avoiding a lot of deviating
+curves from there maximizes readability.
+
+The ‘i’ and ‘l’ are altered to be more disssimilar to ‘1’ and ‘|’. They have
+an added left shoulder and missing left foot. Somewhat a personal preference,
+but this is an important characteristic of the highly popular Monaco, Lucida,
+Andale, Deja Vu, and Bitstream, and even generic web browser monospace fonts.
+
+Numbers (0/6/9) have a dot added to their middle to make them more
+obviously numbers.
+
+Some special ‘operator’ characters were shrunk a bit. The `*` has been turned
+into more of a small dot, as it is often used for bullets and multiplication,
+which can be often better expressed in small dot form.
+
+Other operators follow that small trend: `#$%`. I’ll probably increase the `%`
+since it too closely resembles and `x`.
+
+I like that the original 6x12 uses a strong 2x2px square for dots in various
+puncutation. I’ll probably revert the `%` to use them.
+
+## Other languages
+
+I’ve already added support for the 12 Esperanto ‘hat’ characters. Other
+language accented characters will render fine, but might lack a bit of the
+Orp panache.
+
+## Areas for extension/improvement
+
+Many will not prefer a font as small as 6x12. It might be nice to recreate Orp
+for larger sizes. But once you get into larger fonts, smoothing becomes less
+of an issue, so it may be moot, as you can just go with a smoothed font.
+
+If you really want to economize on screen space, you could reduce your ascent
+by another pixel.
+
+It’s kind of amazing to think how much variation can be accomplished in a 72px
+grid.  I’ve tried creating other alternative characters (sometimes
+accidentally) and found that there are probably several other glyph designs
+that could work well. So feel free to experiment with new variations.
+
+## Why not just use Markus’ package?
+
+Maybe you should; that’s what I did before arriving here. There’s nothing
+wrong with it – we are greatly indebted to its existence. However, its process
+of building a single new font individually is cumbersome. It’s also not
+maintained in git (AFAIK) and it doesn’t have Orp. I wasn’t able to get a
+response from Markus in email to get Orp included, so it lives here.
+
+## Resources
+
+* [Terminal codes](http://linuxgazette.net/issue65/padala.html)
+* [Markus Kuhn’s X11 Fonts](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
