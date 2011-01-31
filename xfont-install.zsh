@@ -31,11 +31,11 @@ rm ${font}-ISO8859-1.bdf
 # Turn into compressed/usable form.
 gzip -f -9 $font.pcf
 
+# Clean up junk.
+rm $trunc.bdf
+
 # Add this new PCF-GZ to $PWD/fonts.dir
 mkfontdir
 
 # Tell X that this font is now available.
 xset +fp $PWD
-
-# Clean up junk.
-rm $trunc.bdf
