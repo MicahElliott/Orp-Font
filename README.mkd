@@ -104,33 +104,36 @@ And things you shouldn’t care about:
 
 1. Install some prerequisites.
 
-    % aptitude install xfonts-utils gbdfed
+        % aptitude install xfonts-utils gbdfed
 
 1. To create a new font, just copy a base font (you’ll likely want to start
    with Orp Medium)
-    % cp orp.bdf myfont.bdf
+
+        % cp orp.bdf myfont.bdf
 
 1. Fire up `gbdfed`, hack some glyphs, and set up your new font’s properties.
    Just hit `C-P` to get to properties and make sure your font family name is
    ‘myfont’.
 
 1. Build and install to CWD with
-    % fontx.zsh myfont
+
+        % fontx.zsh myfont
+
    The font tools magic happens via the few commands in there, but you
    shouldn’t need to worry about it.
 
 1. Figure out what your new font is actually called.
 
-    % xfontsel
+        % xfontsel
 
    Make sure your new font shows up under ‘fmly’ and select it. You can past
    that crazy `-*-myfont-*-…` string into your `~/.Xdefaults-$(hostname)` file.
 
-    xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
+        xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
 
 1. Test your new font
 
-    % fontx-test.zsh myfont
+        % fontx-test.zsh myfont
 
 1. Make it permanent by ensuring you've done the steps in the Quick Start
    section above.
@@ -160,6 +163,7 @@ lesser degree of boldness, and yet still be bold. (This is less of an issue
 with larger fonts.)
 
 You can see some of the basic effects in limited color with this:
+
     % for c in {1..7}; do echo -e "\e[0;$c;3${c}muNitErest1n6 5tR|ng"; done
 
 Presentational variation is important in the code/documentation you
@@ -265,3 +269,4 @@ response from Markus in email to get Orp included, so it lives here.
 
 * [Terminal codes](http://linuxgazette.net/issue65/padala.html)
 * [Markus Kuhn’s X11 Fonts](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
+* [Adding a font to your system](http://osr507doc.sco.com/en/GECG/X_Font_ProcAddFn.html)
