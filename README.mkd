@@ -93,7 +93,7 @@ tell X to start using the font/directory.
 
 And things you shouldn’t care about:
 
-* `bdftruncate.pl` script. You’ve probably already got this on your system,
+* `bdftruncate.pl` — You’ve probably already got this on your system,
   but this newer version is from Markus’ package and provides the recent
   support for some of the ISO10646 stuff (I think that’s what it does).
   Anyway, the system version doesn’t work for this, so I’m copying it in.
