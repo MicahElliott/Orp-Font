@@ -21,13 +21,15 @@ Given that I am definitely not a “Pro”, I’m calling this Orp.
 
 If you just want to start using Orp without tweaking glyphs or moving things
 around, all you need to do is run:
+
     % xset +fp $PWD
 
 You should now be able to fire up an xterm and see the new Orp you just
 “installed”:
+
     % xterm -geom 80x93 -fn '-misc-orp-medium-r-*--*-*-*-*-*-*-iso10646-1'
 
-Put the `xset` line (hard-code expanded `$PWD`) into your `~/.xininrc` and
+Put the `xset` line (hard-code expanded `$PWD`) into your `~/.xsessionrc` and
 you’re now permanent! Read on for tweaking details, philosophy, and anecdotes…
 
 ## Why a project out of a single font?
@@ -101,6 +103,7 @@ And things you shouldn’t care about:
 ## How to create, build, and install a font
 
 1. Install some prerequisites.
+
     % aptitude install xfonts-utils gbdfed
 
 1. To create a new font, just copy a base font (you’ll likely want to start
@@ -117,13 +120,20 @@ And things you shouldn’t care about:
    shouldn’t need to worry about it.
 
 1. Figure out what your new font is actually called.
+
     % xfontsel
+
    Make sure your new font shows up under ‘fmly’ and select it. You can past
    that crazy `-*-myfont-*-…` string into your `~/.Xdefaults-$(hostname)` file.
+
     xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
 
 1. Test your new font
+
     % fontx-test.zsh myfont
+
+1. Make it permanent by ensuring you've done the steps in the Quick Start
+   section above.
 
 ## Why bitmap? (vs truetype)
 
@@ -134,7 +144,7 @@ For small font rendering it’s highly undesirable to have subpixel smoothing.
 
 It probably goes without saying, but it is truly shameful to be writing code,
 looking at data, or doing much of anything in an editor or terminal with a
-variable width font. Programmers depend so much on intented and tabular
+variable width font. Programmers depend so much on indented and tabular
 formatting that the world would fall apart without monospacing.
 
 Note to publishers: Please, please always use monospace fonts for your code
@@ -205,7 +215,7 @@ the ‘spacer’ between characters, it’s pretty essential to keep intact.
 Glyph tops should form a uniform line at row 5. Avoiding a lot of deviating
 curves from there maximizes readability.
 
-The ‘i’ and ‘l’ are altered to be more disssimilar to ‘1’ and ‘|’. They have
+The ‘i’ and ‘l’ are altered to be more dissimilar to ‘1’ and ‘|’. They have
 an added left shoulder and missing left foot. Somewhat a personal preference,
 but this is an important characteristic of the highly popular Monaco, Lucida,
 Andale, Deja Vu, and Bitstream, and even generic web browser monospace fonts.
@@ -221,7 +231,7 @@ Other operators follow that small trend: `#$%`. I’ll probably increase the `%`
 since it too closely resembles and `x`.
 
 I like that the original 6x12 uses a strong 2x2px square for dots in various
-puncutation. I’ll probably revert the `%` to use them.
+punctuation. I’ll probably revert the `%` to use them.
 
 ## Other languages
 
