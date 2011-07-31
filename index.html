@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>MicahElliott/Orp-Font @ GitHub</title>
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #1c850b;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #ffffff;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #e37af4; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #e37af4; }
+    h3 { text-align: center; color: #e37af4; }
+    a { color: #e37af4; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <a href="http://github.com/MicahElliott/Orp-Font"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/MicahElliott/Orp-Font/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/MicahElliott/Orp-Font/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <h1><a href="http://github.com/MicahElliott/Orp-Font">Orp-Font</a>
+      <span class="small">by <a href="http://github.com/MicahElliott">MicahElliott</a></span></h1>
+
+    <div class="description">
+      Orp Bitmap Fonts for X11 (xterm, urxvt, etc) 
+    </div>
+
+    <p>Orp makes font creation and installation easy. This package includes a few small fonts to get you started. If you don't fall in love with them, you can use this package to create your own</p><h2>Dependencies</h2>
+<p>bdftopcf.pl ucs2any bdftopcf mkfontdir gzip xset
+
+(but these are mostly included)</p>
+<h2>Install</h2>
+<p>1. Install some prerequisites.
+
+        % aptitude install xfonts-utils gbdfed
+
+1. To create a new font, just copy a base font (you’ll likely want to start with Orp Medium)
+
+        % cp orp.bdf myfont.bdf
+
+1. Fire up `gbdfed`, hack some glyphs, and set up your new font’s properties. Just hit `C-P` to get to properties and make sure your font family name is ‘myfont’.
+
+1. Build and install to CWD with
+
+        % fontx.zsh myfont
+
+   The font tools magic happens via the few commands in there, but you shouldn’t need to worry about it.
+
+1. Figure out what your new font is actually called.
+
+        % xfontsel
+
+   Make sure your new font shows up under ‘fmly’ and select it. You can past that crazy `-*-myfont-*-…` string into your `~/.Xdefaults-$(hostname)` file.
+
+        xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
+
+1. Test your new font
+
+        % fontx-test.zsh myfont
+
+1. Make it permanent by ensuring you've done the steps in the Quick Start section above.</p>
+<h2>License</h2>
+<p>Orp Bitmap Fonts for X11 (xterm, urxvt, etc)
+    Copyright (C) 2011 Micah Elliott
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.</p>
+<h2>Authors</h2>
+<p>Micah Elliott (mde@MicahElliott.com)<br/><br/>      </p>
+<h2>Contact</h2>
+<p>Micah Elliott (mde@micahelliott.com)<br/>      </p>
+
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/MicahElliott/Orp-Font/zipball/master">zip</a> or
+      <a href="http://github.com/MicahElliott/Orp-Font/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/MicahElliott/Orp-Font</pre>
+    </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/MicahElliott/Orp-Font">MicahElliott/Orp-Font</a>
+    </div>
+
+  </div>
+
+  
+</body>
+</html>
