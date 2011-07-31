@@ -5,15 +5,18 @@
 # See README for more details.
 
 usage="
-usage: ${0:t} FONTNAME.bdf […]
+usage: ${0:t} FONT-NAME.bdf
 
 Generate and install a PCF.
 
 To start a new font, copy an existing BDF:
-  cp 6x12.bdf myfont.bdf
+  cp orp-medium.bdf my-font.bdf
 
 Hack your new font:
-  gbdfed myfont.bdf
+  gbdfed my-font.bdf
+
+Install it:
+  ./xfont-install.zsh my-font
 "
 
 font=${1?Must provide font name sans ext}
@@ -22,10 +25,10 @@ trunc="$font-trunc"
 #resources="${0:h}/resources"
 resources="${0:h}"
 
-deps=( bdftopcf.pl ucs2any bdftopcf mkfontdir gzip xset )
+deps=( bdftruncate.pl ucs2any bdftopcf mkfontdir gzip xset )
 print "Checking for dependencies…"
 for d in $deps; do
-    which $d || exit 1
+    which $d >/dev/null || exit 1
 done
 
 # Generate intermediate truncated file.
