@@ -1,6 +1,8 @@
-5
-italic.pcf.gz -misc-mde2-medium-i-semicondensed--12-110-75-75-c-60-iso10646-1
-orp.pcf.gz -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
-orp2.pcf.gz -misc-orp2-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+7
+italic.bdf.bak -misc-mde2-medium-i-semicondensed--12-110-75-75-c-60-iso10646-1
+italic.pcf.gz -misc-orp-medium-i-semicondensed--12-110-75-75-c-60-iso10646-1
+orp.pcf.gz -misc-profont-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+orp2.bdf.bak -misc-orp friendly-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
+orp2.pcf.gz -misc-orp-medium-r-semicondensed--12-110-75-75-c-60-iso10646-1
 orpbold.bdf -misc-orp-bold-r-semicondensed--12-110-75-75-c-60-iso10646-1
 orpbook.pcf.gz -misc-orp-book-r-semicondensed--12-110-75-75-c-60-iso10646-1

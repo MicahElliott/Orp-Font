@@ -1,17 +1,32 @@
 #! /bin/zsh
 
-# Create a xterm-usable PCF from a BDF.
+# Create a X Windows PCF font from a BDF.
 #
-# To start a new font, copy an existing BDF:
-#   cp 6x12.bdf myfont.bdf
-#
-# Hack your new font:
-#   gbdfed myfont.bdf
+# See README for more details.
+
+usage="
+usage: ${0:t} FONTNAME.bdf […]
+
+Generate and install a PCF.
+
+To start a new font, copy an existing BDF:
+  cp 6x12.bdf myfont.bdf
+
+Hack your new font:
+  gbdfed myfont.bdf
+"
 
 font=${1?Must provide font name sans ext}
+font=${font:t:r}
 trunc="$font-trunc"
 #resources="${0:h}/resources"
 resources="${0:h}"
+
+deps=( bdftopcf.pl ucs2any bdftopcf mkfontdir gzip xset )
+print "Checking for dependencies…"
+for d in $deps; do
+    which $d || exit 1
+done
 
 # Generate intermediate truncated file.
 # Performance workaround for sparse fonts.

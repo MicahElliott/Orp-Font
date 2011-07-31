@@ -1,21 +1,25 @@
-# Orp Bitmap Fonts for X11 (xterm)
+# Orp Bitmap Fonts for X11 (xterm, urxvt, etc)
 
-AKA: Easy font creation and installation for font dummies.
+Orp makes X font creation and installation easy. This package includes a few
+small fonts to get you started. If you don’t fall in love with them, you can
+use this package to create your own.
 
-AKA: A simplified extension/fork of the
+This is a simplified extension/fork of the
 [Unicode fonts and tools for X11](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
 project.
 
 I’ve created three new 6x12 bitmap fonts (plus a silly experimental font).
 
 * Orp Medium    (adapted from Pro Font with various changes)
-* Orp Bold      (only possible readable 6x12 bold)
-* Orp Book      (like Bookman Old Style; slightly ugly but probably optimal)
-* Elvish Medium (fugly attempt at italic, but interesting)
+* Orp Bold      (only possible readable 6x12 bold; most compelling piece of package)
+* Orp Book      (like Bookman Old Style; slightly ugly but nearly optimal)
+* Orp Italic    (not perfect but can’t do perfect bitmap italic)
+* ProFont       (pretty close to [the original](http://en.wikipedia.org/wiki/Pro_font))
 
 The vertical height on all has been lowered by 1px.
 
-Given that I am definitely not a “Pro”, I’m calling this Orp.
+About the name: Given that I am definitely not a “Pro” typographer and neither
+are you, I’ve named this Orp.
 
 ## Quick start
 
@@ -210,8 +214,6 @@ But you really need to use xterm (or one of its close cousins)…
 
 ## Glyph details (for the tweakers)
 
-(The book and elvish are not great, so you probably don’t want to use them.)
-
 You rarely want to spill pixels into column 6. On occasion I find it’s
 acceptable to do so for one pixel on a couple letters. Since col-6 is used as
 the ‘spacer’ between characters, it’s pretty essential to keep intact.
@@ -232,10 +234,13 @@ into more of a small dot, as it is often used for bullets and multiplication,
 which can be often better expressed in small dot form.
 
 Other operators follow that small trend: `#$%`. I’ll probably increase the `%`
-since it too closely resembles and `x`.
+since it too closely resembles an `x`.
 
 I like that the original 6x12 uses a strong 2x2px square for dots in various
 punctuation. I’ll probably revert the `%` to use them.
+
+The ProFont is close to the original but has been tweaked to disambiguate some
+of the glyphs.
 
 ## Other languages
 
@@ -250,7 +255,8 @@ for larger sizes. But once you get into larger fonts, smoothing becomes less
 of an issue, so it may be moot, as you can just go with a smoothed font.
 
 If you really want to economize on screen space, you could reduce your ascent
-by another pixel.
+by another pixel. The font set could possibly even be tweaked to fit into
+shorter vertical size, like 6x10.
 
 It’s kind of amazing to think how much variation can be accomplished in a 72px
 grid.  I’ve tried creating other alternative characters (sometimes
