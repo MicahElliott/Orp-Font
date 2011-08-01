@@ -139,10 +139,13 @@ And things you shouldn’t care about:
 
         % xfontsel
 
-   Make sure your new font shows up under ‘fmly’ and select it. You can past
-   that crazy `-*-my font-*-…` string into your `~/.Xdefaults-$(hostname)` file.
+   Make sure your new font shows up under ‘fmly’ and select it. You can paste
+   that crazy `-*-my font-*-…` string into your `~/.Xdefaults-$(hostname)`
+   file. My preference:
 
-        xterm*font: -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
+        *font:       -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
+        *boldFont:   -misc-orp-bold-r-*--*-*-*-*-*-*-iso10646-1
+        *italicFont: -misc-orp-medium-i-*--*-*-*-*-*-*-iso10646-1
 
 1. Test your new font
 
