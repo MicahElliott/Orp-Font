@@ -92,16 +92,16 @@ tell X to start using the font/directory.
 
 ## Included in this repo
 
-* *`*.bdf`* — A few fonts that you may like or want to change/use as baseline.
+* *`\*.bdf` — A few fonts that you may like or want to change/use as baseline.
 
-* *`xfont-install.zsh`* — The little glue script that could.
+* `xfont-install.zsh` — The little glue script that could.
   Though tiny, it does the full build, plus
   installation and setup.
 
-* *`xfont-test.zsh`* — Dumps an glyph-intensive test file to the screen. Could
+* `xfont-test.zsh` — Dumps an glyph-intensive test file to the screen. Could
   do some other tests in the future.
 
-* *`*.pcf.gz`* — I’ve included the Orp fonts in complied form since they’re
+* `\*.pcf.gz` — I’ve included the Orp fonts in complied form since they’re
   tiny, and some will simply want to install them without tweaking/building.
   They will be rebuilt if you recompile.
 
@@ -131,7 +131,7 @@ And things you shouldn’t care about:
 
 1. Build and install to CWD with
 
-        % fontx.zsh my-font
+        % xfont-install.zsh my-font
 
    The font tools magic happens via the few commands in there, but you
    shouldn’t need to worry about it.
