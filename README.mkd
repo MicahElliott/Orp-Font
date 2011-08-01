@@ -4,7 +4,8 @@ Orp makes X font creation and installation easy. This package includes a few
 small fonts to get you started. If you don’t fall in love with them, you can
 use this package to quickly create your own.
 
-<img src="https://github.com/downloads/MicahElliott/Orp-Font/orp-still-4.png" alt="Orp with clojure/solarized" title="Orp with clojure/solarized" align="right" />
+<img src="https://github.com/MicahElliott/Orp-Font/raw/master/images/orp-still-4.png" alt="Orp with clojure/solarized" title="Orp with clojure/solarized" align="right" />
+
 
 This is a simplified extension/fork of the
 [Unicode fonts and tools for X11](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
