@@ -4,6 +4,12 @@ Orp makes X font creation and installation easy. This package includes a few
 small fonts to get you started. If you don’t fall in love with them, you can
 use this package to quickly create your own.
 
+Use of this package presupposes a few things:
+
+1. You want a small font (so you can optimize screen real estate).
+1. You hate antialiasing of small fonts.
+1. You care about mixing in fonts like bold (and probably even italic).
+
 <img src="https://github.com/MicahElliott/Orp-Font/raw/master/images/orp-still-4.png" alt="Orp with clojure/solarized" title="Orp with clojure/solarized" align="right" />
 
 
@@ -19,7 +25,7 @@ Inside you’ll find five newly invented 6x12 bitmap fonts.
 * Orp Book      (like Bookman Old Style; slightly ugly but nearly optimal)
 * ProFont       (pretty close to [the original](http://en.wikipedia.org/wiki/Pro_font))
 
-The vertical height on all has been lowered by 1px. In practice this causes no
+The vertical height on all has been lowered by 1px. _In practice_ this causes no
 problems.
 
 About the name: Given that I am definitely not a “Pro” typographer (and
@@ -47,16 +53,16 @@ you’re now permanent! Read on for tweaking details, philosophy, and anecdotes�
 monospaced bitmap font is a way of life. Many of us need to tweak fonts,
 add glyphs, or totally redesign a font. So this project exists because:
 
-1. *My ideal font.* I finally have what I consider a perfect enough
+1. **My ideal font.** I finally have what I consider a perfect enough
    programming/do-everything font.
 
-2. *Ease of installation.* It’s been non-trivial to create, build, and install
+2. **Ease of installation.** It’s been non-trivial to create, build, and install
    your own X11 font.
 
-3. *Font hacking.* At some point in your life you’re going to long for a tweak
+3. **Font hacking.** At some point in your life you’re going to long for a tweak
    to your font, or addition of some wacky glyph you’ve dreamed up.
 
-4. *Pontification.* There’s not a lot in here, but this README serves as a
+4. **Pontification.** There’s not a lot in here, but this README serves as a
    place where I can rant about my font ideals, and explain the importance of
    being able to view less common characters and the ability to view a lot of
    text at a time.
@@ -75,13 +81,6 @@ Font](http://en.wikipedia.org/wiki/Pro_font), adapted an xterm friendly BDF
 for it, and enhanced some of its glyphs to be slightly more friendly.  Plus,
 I’ve added a few other derivative fonts that make up the Orp family.
 
-## Disclaimer
-
-I don’t know a whole lot about the X11 font system or the tools that
-manipulate it.  I’ve played with the packages enough to see how new fonts are
-built and installed, and emulated that into a script (`xfont-install`) that
-could operate on a single font.
-
 ## All you need to understand
 
 A BDF file is the ‘source code’ of your font. It is modifiable via
@@ -89,6 +88,13 @@ a tool called `gbdfed` (Gtk BDF EDitor), which is pretty easy for any n00b to
 start whacking glyphs with. After you’re happy with your BDF you run it
 through a bunch of tools that create an output (gzipped) PCF file. Finally you
 tell X to start using the font/directory.
+
+There are two major type systems in X: [_Core_ and _Xft_][x11fonts]. Core
+fonts are "bitmaps" and are what you want in a terminal. They come in the form
+of BDFs (and are compressed as PCFs). Xft fonts are antialiased and you don’t
+want these unless you’re looking at larger fonts. You’ll recognize them as
+TTFs. Actually, you can selectively turn off antialiasing of TTFs, but still
+doesn’t solve the lack of bold/italic offerings.
 
 ## Included in this repo
 
@@ -147,6 +153,9 @@ And things you shouldn’t care about:
         *font:       -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
         *boldFont:   -misc-orp-bold-r-*--*-*-*-*-*-*-iso10646-1
         *italicFont: -misc-orp-medium-i-*--*-*-*-*-*-*-iso10646-1
+
+   You can see it and other fonts on the system with `xlsfonts` (and maybe
+   `fc-list`).
 
 1. Test your new font
 
@@ -241,7 +250,8 @@ curves from there maximizes readability.
 The ‘i’ and ‘l’ are altered to be more dissimilar to ‘1’ and ‘|’. They have
 an added left shoulder and missing left foot. Somewhat a personal preference,
 but this is an important characteristic of the highly popular Monaco, Lucida,
-Andale, Deja Vu, and Bitstream, and even generic web browser monospace fonts.
+Andale, Deja Vu, and Bitstream Vera, and even generic web browser monospace
+fonts.
 
 Numbers (0/6/9) have a dot added to their middle to make them more
 obviously numbers.
@@ -296,3 +306,6 @@ response from Markus in email to get Orp included, so it lives here.
 * [Markus Kuhn’s X11 Fonts](http://www.cl.cam.ac.uk/~mgk25/ucs-fonts.html)
 * [Adding a font to your system](http://osr507doc.sco.com/en/GECG/X_Font_ProcAddFn.html)
 * [Computer fonts explained](http://en.wikipedia.org/wiki/Computer_font)
+* [X11 Font Types][x11fonts]
+
+[x11fonts]: http://www.xfree86.org/current/fonts2.html "X11 Font Types"
