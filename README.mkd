@@ -1,5 +1,7 @@
 # Orp Bitmap Fonts for X11 (xterm, urxvt, etc)
 
+-- NOTE: See [Tamsyn](http://www.fial.com/~scott/tamsyn-font/) for packaging ideas.
+
 Orp makes X font creation and installation easy. This package includes a few
 small fonts to get you started. If you don’t fall in love with them, you can
 use this package to quickly create your own.
