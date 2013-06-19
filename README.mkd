@@ -277,11 +277,27 @@ punctuation. I’ll probably revert the `%` to use them.
 The ProFont is close to the original but has been tweaked to disambiguate some
 of the glyphs.
 
-## Other languages
+## Other languages, extensions
 
 I’ve already added support for the 12 Esperanto ‘hat’ characters. Other
 language accented characters will render fine, but might lack a bit of the
 Orp panache.
+
+The [vim-powerline fancy glyphs](https://github.com/Lokaltog/powerline) are supported in _medium_ (I think the only place they're needed), using the following somewhat original symbols:
+
+    [2b60] Branch symbol
+    [2b61] LN (line) symbol
+    [2b62] FT symbol 1
+    [2b63] FT symbol 2
+    [2b64] Padlock (closed) symbol
+    [2b80] Hard right arrow
+    [2b81] Soft right arrow
+    [2b82] Hard left arrow
+    [2b83] Soft left arrow
+
+To make use of these you’ll need to set in your `~/.vimrc`:
+
+    let Powerline_symbols = 'fancy'
 
 ## Areas for extension/improvement
 
@@ -299,6 +315,8 @@ accidentally) and found that there are probably several other glyph designs
 that could work well. So feel free to experiment with new variations.
 
 Orp-Italic still needs an italicization treatment for its capital letters.
+
+It would be nice to support the exotic [vim-powerline](https://bitbucket.org/gkuznets/vimrc/src/57616999e524754d951c1e4191aafe2a48e41a09/bundle/vim-powerline/fontpatcher/fontpatcher) glyphs.
 
 ## Why not just use Markus’ package?
 
