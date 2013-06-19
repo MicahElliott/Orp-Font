@@ -1,6 +1,6 @@
 # Orp Bitmap Fonts for X11 (xterm, urxvt, etc)
 
--- NOTE: See [Tamsyn](http://www.fial.com/~scott/tamsyn-font/) for packaging ideas.
+<!--NOTE: See [Tamsyn](http://www.fial.com/~scott/tamsyn-font/) for packaging ideas.-->
 
 Orp makes X font creation and installation easy. This package includes a few
 small fonts to get you started. If you don’t fall in love with them, you can
@@ -30,11 +30,17 @@ Inside you’ll find five newly invented 6x12 bitmap fonts.
 The vertical height on all has been lowered by 1px. _In practice_ this causes no
 problems.
 
-About the name: Given that I am definitely not a “Pro” typographer (and
-neither are you) I’ve named this Orp.
+About the name: Given that I am definitely not a “Pro” typographer, I’ve named
+this Orp.
 
 ## Quick start
 
+### Arch Linux
+There is now an AUR package.
+
+    % yaourt -S pro-font-git
+
+### From source
 If you just want to start using the provided Orp fonts without tweaking glyphs
 or moving things around, all you need to do is run:
 
@@ -44,9 +50,9 @@ or moving things around, all you need to do is run:
 You should now be able to fire up an xterm (or better: urxvt) and see the new
 Orp you just “installed”:
 
-    % xterm -geom 80x93 -fn '-misc-orp-medium-r-*--*-*-*-*-*-*-iso10646-1'
+    % xterm -fn '-misc-orp-medium-r-*--*-*-*-*-*-*-iso10646-1'
 
-Put the `xset` line (hard-code expanded `$PWD`) into your `~/.xsessionrc` and
+Put the `xset` line (hard-code expanded `$PWD`) into your `~/.Xdefaults` and
 you’re now permanent! Read on for tweaking details, philosophy, and anecdotes…
 
 ## Why a project out of a single font?
@@ -152,9 +158,9 @@ And things you shouldn’t care about:
    that crazy `-*-my font-*-…` string into your `~/.Xdefaults-$(hostname)`
    file. My preference:
 
-        *font:       -misc-orp-medium-r-*–*-*-*-*-*-*-iso10646-1
-        *boldFont:   -misc-orp-bold-r-*--*-*-*-*-*-*-iso10646-1
-        *italicFont: -misc-orp-medium-i-*--*-*-*-*-*-*-iso10646-1
+        *font:       -misc-orp-medium-r-*-*-12-*-75-75-*-60-iso10646-*
+        *boldFont:   -misc-orp-bold-r-*-*-*-*-*-*-*-*-iso10646-1
+        *italicFont: -misc-orp-*-i-*-*-*-*-*-*-*-*-iso10646-1
 
    You can see it and other fonts on the system with `xlsfonts` (and maybe
    `fc-list`).
