@@ -1,7 +1,7 @@
 STARTFONT 2.1
 COMMENT $Id: 6x12.bdf,v 1.32 2008-06-26 12:50:43+01 mgk25 Rel $
 COMMENT Send bug reports to Markus Kuhn <http://www.cl.cam.ac.uk/~mgk25/>
-FONT -Misc-orp-Medium-I-SemiCondensed--12-110-75-75-C-60-ISO10646-1
+FONT -Misc-orp-Medium-I---12-110-75-75-C-60-ISO10646-1
 SIZE 11 75 75
 FONTBOUNDINGBOX 6 12 0 -2
 STARTPROPERTIES 22
@@ -10,7 +10,7 @@ FOUNDRY "Misc"
 FAMILY_NAME "orp"
 WEIGHT_NAME "Medium"
 SLANT "I"
-SETWIDTH_NAME "SemiCondensed"
+SETWIDTH_NAME ""
 ADD_STYLE_NAME ""
 PIXEL_SIZE 12
 POINT_SIZE 110
@@ -26,7 +26,7 @@ DEFAULT_CHAR 0
 COPYRIGHT "Public domain terminal emulator font.  Share and enjoy."
 CAP_HEIGHT 7
 X_HEIGHT 5
-_GBDFED_INFO "Edited with gbdfed 1.5."
+_GBDFED_INFO "Edited with gbdfed 1.6."
 ENDPROPERTIES
 CHARS 4531
 STARTCHAR char0

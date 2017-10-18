@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /usr/bin/env zsh
 
 # Create a X Windows PCF font from a BDF.
 #
@@ -40,10 +40,13 @@ trunc="$font-trunc"
 utfs=$libdir/8859-1.TXT
 
 # Check for system utility dependencies.
-deps=( bdftruncate.pl ucs2any bdftopcf mkfontdir gzip xset )
+deps=( ucs2any bdftopcf mkfontdir gzip xset )
 print "Checking for dependencies…"
 for d in $deps; do
-    which $d >/dev/null || exit 1
+    which $d >/dev/null || {
+      print "missing $d"
+      exit 1
+    }
 done
 
 pushd $bdfdir
@@ -52,7 +55,7 @@ pushd $bdfdir
 # Performance workaround for sparse fonts.
 # Taken out of package:
 # http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz
-bdftruncate.pl 'U+3200' <$font.bdf >$trunc.bdf
+../bdftruncate.pl 'U+3200' <$font.bdf >$trunc.bdf
 
 # Generate BDF fonts containing subsets of ISO 10646-1 codepoints.
 ucs2any +d $font.bdf $utfs ISO8859-1
@@ -61,7 +64,7 @@ ucs2any +d $font.bdf $utfs ISO8859-1
 bdftopcf $trunc.bdf >$font.pcf
 
 # Remove mysterious generated file.
-rm ${font}-ISO8859-1.bdf
+rm -f ${font}-ISO8859-1.bdf
 
 # Turn into compressed/usable form.
 gzip -f -9 $font.pcf
